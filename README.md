@@ -1,36 +1,36 @@
 # gocreate
 
-Uma CLI simples escrita em Go para gerar rapidamente a estrutura inicial de um novo projeto Go.
+A simple CLI written in Go to quickly generate the initial structure of a new Go project.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- Executa `go mod init` com o repositório correto
-- Gera um arquivo `main.go` básico com `Hello, <nome-do-projeto>`
-- Salva o repositório Git base na primeira execução (ex: `github.com/seunome/`)
-- Reutiliza o repositório automaticamente em execuções futuras
+- Runs `go mod init` with the correct repository path
+- Generates a basic `main.go` file with `Hello, <project-name>`
+- Prompts for your Git repository base on the first run (e.g., `github.com/yourname`)
+- Automatically reuses the saved repository in future executions
 
 ---
 
-## 🚀 Instalação
+## 🚀 Installation
 
-### ✅ Opção 1: Instalar com `go install` (recomendado)
+### ✅ Option 1: Install via `go install` (recommended)
 
-Se o projeto estiver hospedado no GitHub:
+If the project is hosted on GitHub:
 
 ```bash
 go install github.com/hermangoncalves/gocreate@latest
-```
+````
 
-> Isso instalará o binário em: `~/go/bin/gocreate`
+> This will install the binary at: `~/go/bin/gocreate`
 
-Certifique-se de que `~/go/bin` está no seu `PATH`:
+Make sure `~/go/bin` is in your `PATH`:
 
 ```bash
 echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Se usa `zsh`:
+For `zsh` users:
 
 ```bash
 echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.zshrc
@@ -39,22 +39,22 @@ source ~/.zshrc
 
 ---
 
-### 🛠️ Opção 2: Compilar manualmente
+### 🛠️ Option 2: Manual compilation
 
-1. Clone o repositório:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/hermangoncalves/gocreate.git
 cd gocreate
 ```
 
-2. Compile o binário:
+2. Build the binary:
 
 ```bash
 go build -o gocreate
 ```
 
-3. (Opcional) Instale globalmente:
+3. (Optional) Install globally:
 
 ```bash
 sudo mv gocreate /usr/local/bin/
@@ -62,36 +62,47 @@ sudo mv gocreate /usr/local/bin/
 
 ---
 
-## 📦 Uso
+## 📦 Usage
 
 ```bash
-gocreate nome-do-projeto
+gocreate my-project
 ```
 
-### Primeira vez:
+### First time:
 
-Você será solicitado a informar seu repositório base, ex:
+You’ll be prompted to enter your base Git repository:
 
 ```bash
-Informe o seu repositório Git (ex: github.com/seunome): seunome
+Enter your default Git repository (e.g., github.com/yourname): yourname
 ```
 
-A estrutura gerada será:
+The generated structure will look like:
 
 ```
-nome-do-projeto/
+my-project/
 ├── go.mod
 └── main.go
 ```
 
-### Próximas execuções:
+### Next runs:
 
-O repositório será reutilizado automaticamente.
+The CLI will automatically reuse your saved repository prefix.
 
 ---
 
-## ⚙️ Configuração
+## ⚙️ Configuration
 
-- O repositório base informado é salvo em um arquivo `~/.gocreateconfig
-`.
-- Para alterar, basta editar ou remover esse arquivo.
+* The base Git repository is saved in a config file: `~/.gocreateconfig`
+* To change it, simply edit or delete that file:
+
+```bash
+nano ~/.gocreateconfig
+```
+
+or
+
+```bash
+rm ~/.gocreateconfig
+```
+
+The next time you run `gocreate`, it will prompt you again for your Git repository base.
